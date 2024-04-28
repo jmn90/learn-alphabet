@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "dr:build": "npx declarative-routing build",
-    "dr:build:watch": "npx declarative-routing build --watch"
+    "dr:build:watch": "npx declarative-routing build --watch",
+    "tsc": "tsc"
   },
   "dependencies": {
     "@google-cloud/text-to-speech": "^5.2.0",

@@ -8,7 +8,9 @@ export const PokemonSchema = z.object({
   stats: z.string(),
   moves: z.string(),
   image: z.string(),
-  cries: z.string(),
+  cries: z.object({
+    latest: z.string(),
+  }),
 });
 
 export type Pokemon = z.infer<typeof PokemonSchema>;

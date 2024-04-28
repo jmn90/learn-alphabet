@@ -7,7 +7,7 @@ import { useRef, useEffect } from "react";
 
 export const PokemonMenuItem = ({ pokemon }: { pokemon: Pokemon }) => {
   const params = useParams();
-  const elementRef = useRef(null);
+  const elementRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     // If the condition is true, scroll to the element

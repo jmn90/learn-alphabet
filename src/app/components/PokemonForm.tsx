@@ -1,13 +1,9 @@
 // "use client";
-import { getFullPokemon } from "@/pokemon";
 import { Pokemon } from "@/types";
-// import { Button } from "@mantine/core";
-// import { useForm } from "react-hook-form";
-import { TextInput, Checkbox, Button, Group, Box } from "@mantine/core";
+import { TextInput, Button } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
-import Head from "next/head";
+import React from "react";
 import Script from "next/script";
 
 type PokemonFormProps = {
@@ -21,13 +17,7 @@ export const PokemonForm = ({
   pokemonId,
   pokemon,
 }: PokemonFormProps) => {
-  const [value, setValue] = useState("");
   const router = useRouter();
-  // const {
-  //   register,
-  //   handleSubmit: submitForm,
-  //   formState: { errors },
-  // } = useForm();
 
   const refAudio = React.useRef<HTMLAudioElement>(null);
 
@@ -48,10 +38,8 @@ export const PokemonForm = ({
   });
 
   const handleNext = () => {
-    // console.log(pokemonId);
     router.push(`/pokemon/${pokemonId + 1}`);
   };
-  // console.log(pokemon?.cries.latest);
   return (
     <>
       <Script src="https://code.responsivevoice.org/responsivevoice.js?key=PjATEBLw"></Script>
@@ -72,10 +60,10 @@ export const PokemonForm = ({
             {...form.getInputProps("pokemonName")}
             className="[&_*]:text-0 [&_*]:h-[100px] [&_*]:text-white w-[300px]"
             maxLength={1}
-            onKeyDown={(event) => {
-              const value = event.key.toUpperCase();
-              responsiveVoice.speak(value);
-            }}
+            // onKeyDown={(event) => {
+            //   const value = event.key.toUpperCase();
+            //   responsiveVoice.speak(value);
+            // }}
             // onChange={(event) => {
             //   setValue(event.currentTarget.value.toUpperCase());
             //   // const utterance = new SpeechSynthesisUtterance(
