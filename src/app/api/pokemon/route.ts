@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { getFullPokemon } from "@/pokemon";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "auto";
 
 export async function GET(req: NextRequest) {
   const url = new URL(req.url);

@@ -2,7 +2,7 @@ import { getFullPokemon } from "@/pokemon";
 
 import SearchList from "./SearchList";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "auto";
 
 export default async function SearchPage({
   searchParams,
