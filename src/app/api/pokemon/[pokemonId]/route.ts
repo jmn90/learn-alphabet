@@ -12,13 +12,13 @@ export async function generateStaticParams() {
   }));
 }
 
-// export async function GET(
-//   req: NextRequest,
-//   { params }: { params: { pokemonId: string } }
-// ) {
-//   // { params }: { params: { pokemonId: string } }
-//   console.log("pokemonId");
-//   const { pokemonId } = params;
-//   console.log(pokemonId);
-//   return NextResponse.json(await getPokemon(+(pokemonId || "")));
-// }
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { pokemonId: string } }
+) {
+  // { params }: { params: { pokemonId: string } }
+  console.log("pokemonId");
+  const { pokemonId } = params;
+  console.log(pokemonId);
+  return NextResponse.json(await getPokemon(+(pokemonId || "")));
+}
