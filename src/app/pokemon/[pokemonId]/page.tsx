@@ -7,7 +7,7 @@ import { getPokemon, maxPokemon } from "@/pokemon";
 import { useState, useEffect } from "react";
 
 export function generateStaticParams() {
-  const pokemons = Array.from({ length: maxPokemon }, (_, i) => `${i}`);
+  const pokemons = Array.from({ length: maxPokemon }, (_, i) => `${i + 1}`);
   // console.log("page", pokemons);
   return pokemons.map((pokemonId) => ({
     pokemonId,
