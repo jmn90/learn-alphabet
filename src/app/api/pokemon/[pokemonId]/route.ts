@@ -5,7 +5,7 @@ import { getPokemon, maxPokemon } from "@/pokemon";
 export const dynamic = "auto";
 
 export async function generateStaticParams() {
-  const pokemons = Array.from({ length: maxPokemon }, (_, i) => `${i}`);
+  const pokemons = Array.from({ length: maxPokemon }, (_, i) => `${i + 1}`);
   // console.log(pokemons);
   return pokemons.map((pokemonId) => ({
     pokemonId,
