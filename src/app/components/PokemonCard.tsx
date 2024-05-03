@@ -1,8 +1,8 @@
 import { Pokemon } from "@/types";
 import Image from "next/image";
 import { PokemonDetail } from "@/routes";
-
 export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
+  // console.log(PokemonDetail);
   return (
     <div className="flex flex-col p-2 max-w-1/4">
       <div className="bg-gray-800 rounded-tl-xl rounded-tr-xl">

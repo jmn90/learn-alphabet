@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 
-import { Home, Search } from "@/routes";
+// import { Home, Search } from "@/routes";
+// import { Home } from "@/routes";
 
 import "@mantine/core/styles.css";
 
@@ -29,10 +30,11 @@ export default function RootLayout({
       <body className={`${inter.className} dark px-2 md:px-5`}>
         <MantineProvider theme={theme}>
           <header className="flex mb-5 gap-2 text-2xl py-3 px-6 bg-blue-900 text-white rounded-b-xl shadow-gray-700 drop-shadow-2xl">
-            <Home.Link className="font-extrabold">Home</Home.Link>
-            <Search.Link search={{ q: "bulb" }} className="font-light">
+            {/* <Home.Link className="font-extrabold">Home</Home.Link>
+            <Link href="/"> */}
+            {/* <Search.Link search={{ q: "bulb" }} className="font-light">
               Search
-            </Search.Link>
+            </Search.Link> */}
           </header>
           <div className="@container">{children}</div>
         </MantineProvider>

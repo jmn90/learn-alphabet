@@ -3,42 +3,36 @@ import { z } from "zod";
 import { makeGetRoute, makeRoute } from "./makeRoute";
 
 const defaultInfo = {
-  search: z.object({})
+  search: z.object({}),
 };
 
 import * as HomeRoute from "@/app/page.info";
 import * as PokemonSearchAPIRoute from "@/app/api/pokemon/route.info";
 import * as ApiPokemonPokemonIdRoute from "@/app/api/pokemon/[pokemonId]/route.info";
 import * as PokemonDetailRoute from "@/app/pokemon/[pokemonId]/page.info";
-import * as SearchRoute from "@/app/search/page.info";
+// import * as SearchRoute from "@/app/search/page.info";
 
-export const Home = makeRoute(
-  "/",
-  {
-    ...defaultInfo,
-    ...HomeRoute.Route
-  }
-);
-export const PokemonDetail = makeRoute(
-  "/pokemon/[pokemonId]",
-  {
-    ...defaultInfo,
-    ...PokemonDetailRoute.Route
-  }
-);
-export const Search = makeRoute(
-  "/search",
-  {
-    ...defaultInfo,
-    ...SearchRoute.Route
-  }
-);
+export const Home = makeRoute("/", {
+  ...defaultInfo,
+  ...HomeRoute.Route,
+});
+export const PokemonDetail = makeRoute("/pokemon/[pokemonId]", {
+  ...defaultInfo,
+  ...PokemonDetailRoute.Route,
+});
+// export const Search = makeRoute(
+//   "/search",
+//   {
+//     ...defaultInfo,
+//     ...SearchRoute.Route
+//   }
+// );
 
 export const getPokemonSearchAPI = makeGetRoute(
   "/api/pokemon",
   {
     ...defaultInfo,
-    ...PokemonSearchAPIRoute.Route
+    ...PokemonSearchAPIRoute.Route,
   },
   PokemonSearchAPIRoute.GET
 );
@@ -46,7 +40,7 @@ export const getApiPokemonPokemonId = makeGetRoute(
   "/api/pokemon/[pokemonId]",
   {
     ...defaultInfo,
-    ...ApiPokemonPokemonIdRoute.Route
+    ...ApiPokemonPokemonIdRoute.Route,
   },
   ApiPokemonPokemonIdRoute.GET
 );

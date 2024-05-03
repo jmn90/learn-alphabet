@@ -10,11 +10,11 @@ export async function PokemonGrid({ pokemon }: { pokemon?: Pokemon[] }) {
 
   return (
     <div className="flex flex-col">
-      {pokemonFull.map((p) => (
+      {/* {pokemonFull.map((p) => (
         <PokemonDetail.Link pokemonId={p.id} key={p.id}>
           <PokemonCard pokemon={p} />
         </PokemonDetail.Link>
-      ))}
+      ))} */}
     </div>
   );
 }

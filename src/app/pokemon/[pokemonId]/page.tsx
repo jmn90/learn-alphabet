@@ -3,14 +3,25 @@ import { PokemonGrid } from "@/app/components/PokemonGrid";
 import { PokemonInfo } from "@/app/components/PokemonInfo";
 import { PokemonMenu } from "@/app/components/pokemonMenu";
 
-import { getPokemon } from "@/pokemon";
+import { getPokemon, maxPokemon } from "@/pokemon";
 import { useState, useEffect } from "react";
 
+export function generateStaticParams() {
+  const pokemons = Array.from({ length: maxPokemon }, (_, i) => `${i}`);
+  // console.log("page", pokemons);
+  return pokemons.map((pokemonId) => ({
+    pokemonId,
+  }));
+}
+
 export default async function PokemonDetailPage({
-  params: { pokemonId },
+  params,
 }: {
   params: { pokemonId: string };
 }) {
+  console.log("pokemonId");
+  const { pokemonId } = params;
+  // const { pokemon } = params;
   // const [pokemon, setPokemon] = useState(null);
 
   // useEffect(() => {
