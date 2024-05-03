@@ -39,10 +39,10 @@ export default async function PokemonDetailPage({
   const pokemon = await getPokemon(+pokemonId);
   return (
     <main>
-      {pokemon && <PokemonInfo id={+pokemonId} pokemon={pokemon} />}
+      {/* {pokemon && <PokemonInfo id={+pokemonId} pokemon={pokemon} />}
       <div className="w-[200px] ml-auto fixed h-full overflow-y-auto right-4 top-0 pr-2">
         <PokemonMenu />
-      </div>
+      </div> */}
     </main>
   );
 }
