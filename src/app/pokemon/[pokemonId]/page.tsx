@@ -19,7 +19,7 @@ export default async function PokemonDetailPage({
 }: {
   params: { pokemonId: string };
 }) {
-  console.log("pokemonId");
+  // console.log("pokemonId");
   const { pokemonId } = params;
   // const { pokemon } = params;
   // const [pokemon, setPokemon] = useState(null);
