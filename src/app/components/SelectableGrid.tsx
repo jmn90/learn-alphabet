@@ -19,13 +19,11 @@ export function SelectableGrid({ pokemon }: { pokemon: Pokemon[] }) {
           </Link>
         ))}
       </div>
-      {/* {selected && (
+      {selected && (
         <div className="w-1/2">
-          
-            <PokemonInfo id={selected.id} />
-         
+          <PokemonInfo id={selected.id} />
         </div>
-      )} */}
+      )}
     </div>
   );
 }

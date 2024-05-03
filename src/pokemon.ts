@@ -29,13 +29,15 @@ function summarizePokemon(pokemon: any): Pokemon {
     },
   };
 }
-const max = 500;
+export const maxPokemon = 500;
 export async function getFullPokemon(
-  limit: number = max,
+  limit: number = maxPokemon,
   q?: string
 ): Promise<Pokemon[]> {
   const resp = await fetch(
-    `https://pokeapi.co/api/v2/pokemon?limit=${q ? max : limit || max}&offset=0`
+    `https://pokeapi.co/api/v2/pokemon?limit=${
+      q ? maxPokemon : limit || maxPokemon
+    }&offset=0`
   );
   const json = await resp.json();
 

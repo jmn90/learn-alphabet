@@ -29,7 +29,7 @@ export const PokemonForm = ({
 
     validate: {
       pokemonName: (value) => {
-        console.log(value.toLowerCase(), pokemonName.charAt(0).toLowerCase());
+        // console.log(value.toLowerCase(), pokemonName.charAt(0).toLowerCase());
         return value.toLowerCase() === pokemonName.charAt(0).toLowerCase()
           ? null
           : "Mauvaise lettre!";
@@ -40,6 +40,10 @@ export const PokemonForm = ({
   const handleNext = () => {
     router.push(`/pokemon/${pokemonId + 1}`);
   };
+
+  if (form.errors.pokemonName) {
+    // form.setFieldValue("pokemonName", "");
+  }
   return (
     <>
       <Script src="https://code.responsivevoice.org/responsivevoice.js?key=PjATEBLw"></Script>
@@ -48,8 +52,8 @@ export const PokemonForm = ({
       </audio>
       <form
         onSubmit={form.onSubmit(() => {
-          console.log("success");
-          refAudio.current?.play();
+          // console.log("success");
+          // refAudio.current?.play();
         })}
       >
         <div className="relative flex align-items-center  mb-8">
@@ -58,7 +62,7 @@ export const PokemonForm = ({
             placeholder=""
             key={form.key("pokemonName")}
             {...form.getInputProps("pokemonName")}
-            className="[&_*]:text-0 [&_*]:h-[100px] [&_*]:text-white w-[300px]"
+            className="[&_*]:text-0 [&_*:first-child]:h-[100px] [&_*]:text-white w-[300px]"
             maxLength={1}
             // onKeyDown={(event) => {
             //   const value = event.key.toUpperCase();
@@ -87,9 +91,14 @@ export const PokemonForm = ({
         </Button>
         {form.isValid() && (
           <>
-            <div>Good Job!</div>
+            <div className="my-12 text-4xl">Good Job!</div>
 
-            <Button variant="light" onClick={handleNext}>
+            <Button
+              variant="filled"
+              color="green"
+              size="xl"
+              onClick={handleNext}
+            >
               Suivant
             </Button>
           </>
