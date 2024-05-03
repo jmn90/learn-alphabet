@@ -7,8 +7,8 @@ const defaultInfo = {
 };
 
 import * as HomeRoute from "@/app/page.info";
-import * as PokemonSearchAPIRoute from "@/app/api/pokemon/route.info";
-import * as ApiPokemonPokemonIdRoute from "@/app/api/pokemon/[pokemonId]/route.info";
+import * as PokemonSearchAPIRoute from "../../api/pokemon/route.info";
+import * as ApiPokemonPokemonIdRoute from "../../[pokemonId]/route.info";
 import * as PokemonDetailRoute from "@/app/pokemon/[pokemonId]/page.info";
 // import * as SearchRoute from "@/app/search/page.info";
 

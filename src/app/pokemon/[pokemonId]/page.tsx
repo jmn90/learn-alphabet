@@ -38,7 +38,7 @@ export default async function PokemonDetailPage({
   return (
     <main>
       {pokemon && <PokemonInfo id={+pokemonId} pokemon={pokemon} />}
-      <div className="w-[200px] ml-auto fixed h-full overflow-y-auto right-4 top-0">
+      <div className="w-[200px] ml-auto fixed h-full overflow-y-auto right-4 top-0 pr-2">
         <PokemonMenu />
       </div>
     </main>
