@@ -29,7 +29,7 @@ export const PokemonForm = ({
 
     validate: {
       pokemonName: (value) => {
-        console.log(value.toLowerCase(), pokemonName.charAt(0).toLowerCase());
+        // console.log(value.toLowerCase(), pokemonName.charAt(0).toLowerCase());
         return value.toLowerCase() === pokemonName.charAt(0).toLowerCase()
           ? null
           : "Mauvaise lettre!";
