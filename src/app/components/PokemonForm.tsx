@@ -5,6 +5,8 @@ import { useForm } from "@mantine/form";
 import { useRouter } from "next/navigation";
 import React from "react";
 import Script from "next/script";
+import { Play, Check, X } from "lucide-react";
+import { clsx } from "clsx";
 
 type PokemonFormProps = {
   pokemonName: string;
@@ -26,13 +28,15 @@ export const PokemonForm = ({
     initialValues: {
       pokemonName: "",
     },
+    validateInputOnChange: true,
 
     validate: {
       pokemonName: (value) => {
         console.log(value.toLowerCase(), pokemonName.charAt(0).toLowerCase());
         return value.toLowerCase() === pokemonName.charAt(0).toLowerCase()
           ? null
-          : "Mauvaise lettre!";
+          : "r";
+        // : "Mauvaise lettre!";
       },
     },
   });
@@ -40,6 +44,8 @@ export const PokemonForm = ({
   const handleNext = () => {
     router.push(`/pokemon/${pokemonId + 1}`);
   };
+
+  const isValid = form.isValid();
   return (
     <>
       <Script src="https://code.responsivevoice.org/responsivevoice.js?key=PjATEBLw"></Script>
@@ -49,16 +55,20 @@ export const PokemonForm = ({
       <form
         onSubmit={form.onSubmit(() => {
           console.log("success");
-          refAudio.current?.play();
         })}
       >
-        <div className="relative flex align-items-center  mb-8">
+        <div className="relative flex align-center  mb-8">
           <TextInput
             type="text"
             placeholder=""
             key={form.key("pokemonName")}
             {...form.getInputProps("pokemonName")}
-            className="[&_*]:text-0 [&_*]:h-[100px] [&_*]:text-white w-[300px]"
+            className={clsx(
+              "[&_*]:text-4xl [&_*]:capitalize [&_*]:h-[100px]  w-[300px]",
+              !isValid && "[&_input]:border-[3px]",
+              isValid && "[&_input]:border-[#00ff55] [&_input]:border-[3px]"
+            )}
+            // className="[&_*]:text-0 [&_*]:h-[100px] [&_*]:text-white w-[300px]"
             maxLength={1}
             // onKeyDown={(event) => {
             //   const value = event.key.toUpperCase();
@@ -78,21 +88,35 @@ export const PokemonForm = ({
             // }}
             // value={value}
           />
-          <p className="uppercase text-4xl text-black absolute top-[20px] p-3">
+          {/* <p className="uppercase text-4xl text-black absolute top-[20px] p-3">
             {form.getValues().pokemonName}
-          </p>
+          </p> */}
+
+          {/* <Button variant="filled" type="submit">
+            Vérifier
+          </Button> */}
+
+          {!isValid && <X size={100} className="stroke-rose-800" />}
+          {isValid && <Check size={100} color="#00ff55" />}
         </div>
-        <Button variant="filled" type="submit">
-          Vérifier
-        </Button>
-        {form.isValid() && (
-          <>
-            <div>Good Job!</div>
+
+        {isValid && (
+          <div className="bg-whit">
+            <Button
+              variant="filled"
+              type="button"
+              className="mr-4"
+              onClick={() => {
+                refAudio.current?.play();
+              }}
+            >
+              <Play />
+            </Button>
 
             <Button variant="light" onClick={handleNext}>
               Suivant
             </Button>
-          </>
+          </div>
         )}
       </form>
     </>

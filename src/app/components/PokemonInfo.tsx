@@ -23,6 +23,8 @@ export function PokemonInfo({
   }, [id, initialPokemon]);
 
   const pokemon = initialPokemon || data;
+
+  console.log(pokemon);
   return pokemon ? (
     <div className="mt-5 @container">
       <div className="@lg:flex flex-wrap gap-24">

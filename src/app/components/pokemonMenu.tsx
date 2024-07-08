@@ -7,7 +7,7 @@ import { useParams } from "next/navigation";
 import { PokemonMenuItem } from "@/app/components/PokemonMenuItem";
 
 export async function PokemonMenu({ pokemon }: { pokemon?: Pokemon[] }) {
-  const pokemonFull = await getFullPokemon();
+  const pokemonFull = await getFullPokemon(151);
 
   return (
     <div className="flex flex-col">
