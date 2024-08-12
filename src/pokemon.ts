@@ -79,7 +79,7 @@ export async function getPokemonRange(id: string): Promise<Pokemon[]> {
       // console.error(error.message);
 
       // If an error occurs, reset the starting ID to 1 and restart the loop
-      startId = 1;
+      startId = 0 - i;
       // i = -1; // Reset the loop to start from the new baseline
       // pokemons.length = 0; // Clear the collected Pokémon
     }
