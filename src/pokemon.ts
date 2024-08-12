@@ -29,16 +29,17 @@ function summarizePokemon(pokemon: any): Pokemon {
     },
   };
 }
-export const maxPokemon = 500;
+export const maxPokemon = 1302;
 export async function getFullPokemon(
   limit: number = maxPokemon,
   q?: string
 ): Promise<Pokemon[]> {
-  const resp = await fetch(
-    `https://pokeapi.co/api/v2/pokemon?limit=${
-      q ? maxPokemon : limit || maxPokemon
-    }&offset=0`
-  );
+  // const resp = await fetch(
+  //   `https://pokeapi.co/api/v2/pokemon?limit=${
+  //     q ? maxPokemon : limit || maxPokemon
+  //   }&offset=0`
+  // );
+  const resp = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=1302`);
   const json = await resp.json();
 
   let results: any[] = json.results;
@@ -56,6 +57,35 @@ export async function getFullPokemon(
       return sum;
     })
   );
+}
+
+export async function getPokemonRange(id: string): Promise<Pokemon[]> {
+  const pokemons: Pokemon[] = [];
+  let startId = parseInt(id);
+
+  for (let i = 0; i < 5; i++) {
+    let currentId = startId + i;
+
+    try {
+      let resp = await fetch(`https://pokeapi.co/api/v2/pokemon/${currentId}`);
+
+      if (!resp.ok) {
+        throw new Error(`Pokemon with ID ${currentId} not found`);
+      }
+
+      const pokemon = summarizePokemon(await resp.json());
+      pokemons.push(pokemon);
+    } catch (error) {
+      // console.error(error.message);
+
+      // If an error occurs, reset the starting ID to 1 and restart the loop
+      startId = 1;
+      // i = -1; // Reset the loop to start from the new baseline
+      // pokemons.length = 0; // Clear the collected Pokémon
+    }
+  }
+
+  return pokemons;
 }
 
 export async function getPokemon(id: number): Promise<Pokemon> {
